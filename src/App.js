@@ -68,5 +68,33 @@ render() {
 }
 }
 
+// Quote Box component
+const QuoteBox = ({ quote, author }) => { //destructuring
+   return (
+      <React.Fragment>
+         <div id='text'><p>{quote}</p></div>
+         <div id='author'><h5>{author}</h5></div>
+      </React.Fragment>
+   )
+}
+
+
+// Social Share component
+const TwitterShare = ({ quote, author }) => {
+   return (
+      <React.Fragment>
+         <a href={`https://twitter.com/intent/tweet?text= ${quote} ${author}`} target="_blank" title="Post this quote on twitter!" id='tweet-quote'>
+            <i className="fab fa-twitter twitter-icon" />
+         </a>
+      </React.Fragment>
+   )
+}
+
+//Button component
+const Button = ({ onClick, title }) => {
+   return (
+      <button className='button' id='new-quote' onClick={onClick}>{title}</button>
+   )
+}
 
 export default App;
