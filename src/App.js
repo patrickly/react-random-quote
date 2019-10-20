@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-
+import './App.css';
 
 class App extends Component {
 
@@ -40,29 +40,33 @@ class App extends Component {
 
     })
  }
-
- getNewQuote = () => {
+ getNewQuote = () => { //will be called on clicking the New Quote button
   this.getQuote()
 }
 
-
-  render(){
-    console.log('render method runs')
-
-    const { quote, author } = this.state;
-
-    return (
-      <div id="wrapper">
+render() {
+  const { quote, author } = this.state //Destructuring
+  return (
+     <div id='wrapper'>
         <h1 className='title'>Random Quote App</h1>
+
         <div id='quote-box'>
-          <div id='text'><p>{quote}</p></div>
-          <div id='author'><h5>{author}</h5></div>
-          {/* <div id='text'><p>{this.state.quote}</p></div>
-          <div id='author'><h5>{this.state.author}</h5></div> */}
+           <div id='text'><p>{quote}</p></div>
+           <div id='author'><h5>{author}</h5></div>
+
+           <div id='buttons'>
+              <a id='tweet-quote' href={`https://twitter.com/intent/tweet?text=${quote} ${author}`} target='_blank' title="Post this quote on twitter!">
+                 <span>
+                    <i className="fab fa-twitter twitter-icon" /> //fontawesome twitter icon
+                 </span>
+              </a>
+              <button id='new-quote' className='buttons' onClick={this.getNewQuote}>New Quote</button>
+           </div>
         </div>
-      </div>
-    )
-  }
+     </div>
+  )
 }
+}
+
 
 export default App;
