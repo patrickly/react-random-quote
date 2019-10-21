@@ -45,26 +45,22 @@ class App extends Component {
 }
 
 render() {
-  const { quote, author } = this.state //Destructuring
-  return (
-     <div id='wrapper'>
-        <h1 className='title'>Random Quote App</h1>
+   const { quote, author } = this.state
+   return (
+      <div id='wrapper'>
+         <h1 className='title'>Random Quote App</h1>
 
-        <div id='quote-box'>
-           <div id='text'><p>{quote}</p></div>
-           <div id='author'><h5>{author}</h5></div>
+         <div id='quote-box'>
+            <QuoteBox quote={quote} author={author} /> 
+            {/* //passing data via props to QuoteBox component */}
 
-           <div id='buttons'>
-              <a id='tweet-quote' href={`https://twitter.com/intent/tweet?text=${quote} ${author}`} target='_blank' title="Post this quote on twitter!">
-                 <span>
-                    <i className="fab fa-twitter twitter-icon" /> //fontawesome twitter icon
-                 </span>
-              </a>
-              <button id='new-quote' className='buttons' onClick={this.getNewQuote}>New Quote</button>
-           </div>
-        </div>
-     </div>
-  )
+            <div id='buttons'>
+               <TwitterShare quote={quote} author={author} />
+               <Button id='new-quote' title='New Quote' onClick={this.getNewQuote} />
+            </div>
+         </div>
+      </div>
+   )
 }
 }
 
